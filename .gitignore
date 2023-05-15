@@ -1,0 +1,9 @@
+data/
+dataset/
+model/
+output/
+build/
+__pycache__/
+data.tar.gz
+.DS_Store
+*.[oa]
