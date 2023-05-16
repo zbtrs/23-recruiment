@@ -12,12 +12,12 @@ Usage:
 import random
 import struct
 
-DENSITY = random.uniform(0, 0.5)
-UPPER, LOWER = 100, -100
+DENSITY = .1
+UPPER, LOWER = 1, -1
 SPM_SIZES = [(256, 256), (512, 512), (1024, 1024)]
 
 def _generate_random_float():
-  return random.uniform(UPPER, LOWER)
+  return random.uniform(LOWER, UPPER)
 
 # 对称稀疏矩阵
 def _symmetric_matrix(m, n):
@@ -45,7 +45,7 @@ def _diagonal_matrix(m, n):
 
 # 条带系数矩阵
 def _banded_matrix(m, n):
-  half_width = random.randint(1, min(m, n) // 3)
+  half_width = random.randint(1, 5)
   return [[_generate_random_float() if abs(i - j) <= half_width else .0 for j in range(n)]
           for i in range(m)]
 
