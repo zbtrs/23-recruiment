@@ -62,7 +62,7 @@ def _check_sparsity(mat):
   zores = sum(row.count(.0) for row in mat)
   return zores / total > 0.5
 
-def create_sparse_matrix(func, m, n) -> list[list[float]]:
+def create_sparse_matrix(func, m, n):
   while True:
     mat = func(m, n)
     if _check_sparsity(mat):
@@ -77,7 +77,7 @@ def dump_to_file(mat, filename):
       for num in row:
         f.write(struct.pack("f", num))
 
-def read_from_file(filename) -> list[list[float]]:
+def read_from_file(filename):
   with open(filename, "rb") as f:
     m, n = struct.unpack("ii", f.read(8))
     return [[struct.unpack('f', f.read(4))[0] for _ in range(n)] for _ in range(m)]

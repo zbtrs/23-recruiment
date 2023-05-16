@@ -33,9 +33,9 @@ vector<vector<float>> create_matrix(int size) {
 }
 
 int main(int argc, char *argv[]) {
+  assert(argc > 1);
 // read from file
   cout << "test0: " << endl;
-  assert(argc > 1);
   string filename(argv[1]);
   SparseMatrix test0(filename);
   vector<float> vec, res;
@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
   random_vec(vec, size);
   res = vec * test1;
   cout << endl;
-// SpMSp
+// SpMM
   cout << "test2" << endl;
   SparseMatrix test2(size, size);
   vector<vector<float>> A(create_matrix(size));
