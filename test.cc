@@ -1,5 +1,8 @@
 #include "SparseMatrix.hh"
+#include <cassert>
 #include <random>
+#include <string>
+#include <tuple>
 #include <vector>
 #include <iostream>
 
@@ -29,11 +32,21 @@ vector<vector<float>> create_matrix(int size) {
   return matrix;
 }
 
-int main() {
+int main(int argc, char *argv[]) {
+// read from file
+  cout << "test0: " << endl;
+  assert(argc > 1);
+  string filename(argv[1]);
+  SparseMatrix test0(filename);
+  vector<float> vec, res;
+  int m, n;
+  std::tie(m, n) = test0.size();
+  random_vec(vec, n);
+  res = vec * test0;
+  cout << endl;
 // SpMV
   int size = 1024;
   cout << "test1: " << endl;
-  vector<float> vec, res;
   SparseMatrix test1(size, size);
   random_vec(vec, size);
   res = vec * test1;
